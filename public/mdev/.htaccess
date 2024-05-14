@@ -1,0 +1,29 @@
+RewriteEngine On
+
+# Activer la mise en cache pour les images (par exemple, pour les fichiers .jpg, .png, .jpeg)
+#<FilesMatch "\.(jpg|jpeg|png|webp)$">
+#    Header set Cache-Control "public, max-age=604800" # Cache pendant une semaine (en secondes)
+#</FilesMatch>
+## Activer la mise en cache pour les fichiers CSS
+#<FilesMatch "\.css$">
+#    Header set Cache-Control "public, max-age=2592000" # Cache pendant un mois (en secondes)
+#</FilesMatch>
+
+RewriteCond %{HTTP_HOST} ^www.mdevelopment.ch [NC]
+RewriteRule ^(.*)$ https://mdevelopment.ch/$1 [L,R=301]
+# The following rule tells Apache that if the requested filename
+# exists, simply serve it.
+RewriteCond %{REQUEST_FILENAME} -s [OR]
+RewriteCond %{REQUEST_FILENAME} -l [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^.*$ - [L]
+
+# The following rewrites all other queries to index.php. The
+# condition ensures that if you are using Apache aliases to do
+# mass virtual hosting or installed the project in a subdirectory,
+# the base path will be prepended to allow proper resolution of
+# the index.php file; it will work in non-aliased environments
+# as well, providing a safe, one-size fits all solution.
+RewriteCond %{REQUEST_URI}::$1 ^(/.+)/(.*)::\2$
+RewriteRule ^(.*) - [E=BASE:%1]
+RewriteRule ^(.*)$ %{ENV:BASE}/index.php [L]

@@ -21,7 +21,8 @@ return [
         "total" => "Total",
         "Hours" => "Heures",
         "hours" => "heures",
-        "tasks" => "Tâches"
+        "tasks" => "Tâches",
+        "task-details" => "Afficher le détail des tâches"
     ],
     "details" => "Détails",
     "edit" => "Modifier",

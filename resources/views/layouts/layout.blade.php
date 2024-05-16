@@ -19,6 +19,7 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="{{asset("assets/js/utils.js")}}"></script>
     @vite('resources/css/app.css')
+    @vite(['resources/css/app.css','resources/js/app.js'])
 </head>
 
 <body class="bg-white dark:bg-neutral-900 text-black dark:text-white">
@@ -52,8 +53,6 @@
                         ?>
                         <a href="{{route("projects.index")}}" class="{{Route::currentRouteNamed('projects.*') ? $activeClass : $notActiveClass}}" aria-current="page">{{__("global.navbar.projects")}}</a>
                         <a href="{{route("billings.index")}}" class="{{Route::currentRouteNamed('billings.*') ? $activeClass : $notActiveClass}}" aria-current="page">{{__("global.navbar.billings")}}</a>
-{{--                        <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Projects</a>--}}
-{{--                        <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Calendar</a>--}}
                         @if(\App\Http\Middleware\MyAuth::hasPermission(\App\PermissionEnum::SPECIAL_PERM__ALLOW_FOR_ADMIN, auth()->user()->role))
                             <form method="POST" action="{{route("application.change-company")}}">
                                 @csrf

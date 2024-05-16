@@ -6,6 +6,12 @@
     <title>Connexion - MDevelopment</title>
     <meta name="viewport" content="width&#x3D;device-width,&#x20;initial-scale&#x3D;1.0">
     <meta http-equiv="X-UA-Compatible" content="IE&#x3D;edge">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{asset("mdev/img/apple-touch-icon.png")}}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{asset("mdev/img/favicon-32x32.png")}}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{asset("mdev/img/favicon-16x16.png")}}">
+    <link rel="shortcut icon" href="{{asset("mdev/img/favicon-16x16.png")}}" type="image/x-icon">
+    <link rel="icon" href="{{asset("mdev/img/favicon-16x16.png/")}}" type="image/x-icon">
+
     <!-- Le styles -->
     <link href='{{asset("assets/css/boxicons.min.css")}}' rel='stylesheet'>
     @vite('resources/css/app.css')

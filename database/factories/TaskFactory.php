@@ -22,7 +22,7 @@ class TaskFactory extends Factory
             "name" => fake()->text(50),
             "description" => fake()->text(200),
             "hours" => fake()->numberBetween(10, 25).":".(fake()->boolean() ? "00" : "30"),
-            "progress_hours" => "0".fake()->numberBetween(0, 2).":".fake()->numberBetween(10, 59),
+            "progress_hours" => "00:00",
             "project_id" => 1,
         ];
     }

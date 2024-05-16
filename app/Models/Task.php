@@ -22,6 +22,7 @@
             "description",
             "hours",
             "progress_hours",
+            "is_finished",
             "project_id",
             'created_at',
         ];
@@ -47,5 +48,8 @@
 
         public function project() {
             return $this->belongsTo(Project::class, "project_id", "id");
+        }
+        public function reports() {
+            return $this->hasMany(Report::class, "task_id", "id");
         }
     }

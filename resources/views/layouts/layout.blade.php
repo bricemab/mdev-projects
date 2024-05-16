@@ -6,11 +6,18 @@
     <title>Projets - MDevelopment</title>
     <meta name="viewport" content="width&#x3D;device-width,&#x20;initial-scale&#x3D;1.0">
     <meta http-equiv="X-UA-Compatible" content="IE&#x3D;edge">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{asset("mdev/img/apple-touch-icon.png")}}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{asset("mdev/img/favicon-32x32.png")}}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{asset("mdev/img/favicon-16x16.png")}}">
+    <link rel="shortcut icon" href="{{asset("mdev/img/favicon-16x16.png")}}" type="image/x-icon">
+    <link rel="icon" href="{{asset("mdev/img/favicon-16x16.png/")}}" type="image/x-icon">
+
     <!-- Le styles -->
     <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.min.js" integrity="sha512-L0Shl7nXXzIlBSUUPpxrokqq4ojqgZFQczTYlGjzONGTDAcLremjwaWv5A+EDLnxhQzY5xUZPWLOLqYRkY0Cbw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="{{asset("assets/js/utils.js")}}"></script>
     @vite('resources/css/app.css')
 </head>
 

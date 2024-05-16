@@ -66,6 +66,12 @@
             Task::factory(10)->create();
             Report::factory(10)->create();
             $reports = [];
+            $timeProject = "00:00";
+            foreach (Task::all() as $task) {
+                $timeProject = \UtilsHelper::sumTimeStrings($task->hours, $timeProject);
+            }
+            $project->hours = \UtilsHelper::convertHoursMinutesToDecimal($timeProject);
+            $project->save();
             foreach (Report::all() as $report) {
                 if (!array_key_exists($report->task_id, $reports)) {
                     $reports[$report->task_id] = "00:00";

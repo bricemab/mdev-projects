@@ -64,4 +64,10 @@ class Project extends Model
     public function billings() {
         return $this->hasMany(Billing::class, "project_id", "id");
     }
+    public function reports() {
+        return $this->hasMany(Report::class, "project_id", "id");
+    }
+    public function tasks() {
+        return $this->hasMany(Task::class, "project_id", "id");
+    }
 }

@@ -17,6 +17,7 @@ return new class extends Migration
             $table->text("description");
             $table->text("hours");
             $table->text("progress_hours");
+            $table->boolean("is_finished")->default(false);
             $table->unsignedBigInteger('project_id');
             $table->foreign('project_id')->references('id')->on('projects');
             $table->dateTime("created_at")->default(date("Y-m-d H:i:s"));

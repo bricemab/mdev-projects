@@ -22,6 +22,43 @@ class ProjectController extends Controller
         return view("pages.layout.projects.add");
     }
     public function detail(Project $project) {
-        return view("pages.layout.projects.detail", ["project" => $project]);
+        $data = [];
+
+        return view("pages.layout.projects.detail", ["project" => $project, "data" => ($data)]);
     }
+//    public function detail(Project $project) {
+//        $data = [
+//            'labels' => [],
+//            'datasets' => [
+//                [
+//                    'data' => [],
+//                    'backgroundColor' => \UtilsHelper::$darkThemeColors,
+//                ]
+//            ],
+//        ];
+//        $totalTime = "00:00";
+//        $totalTimeValue = 0;
+//        $projectTimeExplode = explode(":", \UtilsHelper::convertDecimalToHoursMinutes($project->hours));
+//        $projectValue = (int)$projectTimeExplode[0] * 60 + (int)$projectTimeExplode[1];
+//        foreach ($project->tasks as $task) {
+//            $time = explode(":", $task->progress_hours);
+//            $timeNeeded = explode(":", $task->hours);
+//            $timeValue = (int)$time[0] * 60 + (int)$time[1];
+//            $timeNeededValue = (int)$timeNeeded[0] * 60 + (int)$timeNeeded[1];
+//            $reportTask["time"] = $task->progress_hours;
+//            $reportTask["value"] = $timeNeededValue - $timeValue;
+//
+//            $data["datasets"][0]["data"][] = $timeValue;
+//            $label = $task->name ." \n";
+//            $label .= __("projects.detail.remained").": " . \UtilsHelper::subtractTime($task->hours, $task->progress_hours) . "\n";
+//            $label .= __("projects.detail.performed").": ". $task->progress_hours . "\n";
+//            $label .= __("projects.detail.total").": ". $task->hours;
+//            $data["labels"][] = $label;
+//            $totalTime = \UtilsHelper::sumTimeStrings($totalTime, $task->progress_hours);
+//            $totalTimeValue += $timeValue;
+//        }
+//        $data["datasets"][0]["data"][] = $projectValue - $totalTimeValue;
+//        $data["labels"][] = __("projects.detail.hours-remained") ." \n ". \UtilsHelper::subtractTime(\UtilsHelper::convertDecimalToHoursMinutes($project->hours), $totalTime) . " / " . $project->hours;
+//        return view("pages.layout.projects.detail", ["project" => $project, "data" => ($data)]);
+//    }
 }

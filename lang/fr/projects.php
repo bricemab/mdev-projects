@@ -14,7 +14,14 @@ return [
         "information" => "Informations",
         "client" => "Client",
         "project-contract" => "Projet/Contrat",
-        "pool" => "Pool"
+        "pool" => "Pool",
+        "hours-remained" => "Heures restants",
+        "remained" => "Restant",
+        "performed" => "Effectué",
+        "total" => "Total",
+        "Hours" => "Heures",
+        "hours" => "heures",
+        "tasks" => "Tâches"
     ],
     "details" => "Détails",
     "edit" => "Modifier",

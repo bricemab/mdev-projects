@@ -12,7 +12,6 @@ class FileController extends Controller
 {
     public function show(File $file)
     {
-//        auth()->user()->role !== RoleEnum::ROLE_ADMIN->value
         if (auth()->user()->company_id !== $file->company->id) {
             abort(401);
         }
@@ -24,5 +23,19 @@ class FileController extends Controller
         $content = Storage::get($path);
         $type = Storage::mimeType($path);
         return Response::make($content, 200)->header("Content-Type", $type);
+    }
+
+    public function download(File $file)
+    {
+        if (auth()->user()->company_id !== $file->company->id) {
+            abort(401);
+        }
+        $filename = $file->path.$file->unique_name;
+        $path = "public/app/" . $filename;
+        if (!Storage::exists($path)) {
+            abort(401);
+        }
+        $filename = $file->name.".".$file->extension;
+        return Storage::download($path, $filename);
     }
 }

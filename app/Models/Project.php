@@ -5,6 +5,7 @@ namespace App\Models;
 use App\BillingEnum;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 class Project extends Model
 {
@@ -49,6 +50,9 @@ class Project extends Model
 
     public function resolveRouteBinding($value, $field = null)
     {
+        if (!session()->get('company')) {
+            return redirect()->route("auth.login");
+        }
         $companyId = session()->get('company')->id;
         return $this->where($field ?? 'id', $value)
             ->where('company_id', $companyId)

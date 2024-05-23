@@ -2,7 +2,15 @@
 
 @section("content")
 
-    <div class="relative shadow-md sm:rounded-lg">
+    <div class="relative sm:rounded-lg">
+        @if(\App\Http\Middleware\MyAuth::hasPermission(\App\PermissionEnum::PROJECTS__ADD, auth()->user()->role))
+            <div class="relative sm:rounded-lg flex gap-5 my-5 float-right">
+                <a href="{{route("projects.add")}}" class="hidden sm:flex sm:text-center text-neutral-700 max-w-max align-items-center justify-content-center bg-neutral-50 hover:bg-neutral-200 cursor-pointer dark:bg-neutral-700 dark:text-neutral-400 dark:hover:bg-neutral-800 font-bold p-2 rounded">
+                    <i class='bx bx-plus text-[25px]'></i>
+                    {{__("projects.add")}}
+                </a>
+            </div>
+        @endif
         <table class="w-full text-sm text-left rtl:text-right text-neutral-500 dark:text-neutral-400">
             <thead class="text-xs text-neutral-700 uppercase bg-neutral-50 dark:bg-neutral-700 dark:text-neutral-400">
             <tr>
@@ -47,7 +55,9 @@
                         <br>{{date("d.m.Y", strtotime($project->end_date))}}
                     </td>
                     <td class="px-6 py-4 text-center">
-                        <i class='bx bxs-file-pdf cursor-pointer text-xl'></i>
+                        <a href="{{route("files.download", $project->file->unique_name)}}">
+                            <i class='bx bxs-file-pdf cursor-pointer text-xl'></i>
+                        </a>
                     </td>
                     <td class="px-6 py-4">
                         <div>

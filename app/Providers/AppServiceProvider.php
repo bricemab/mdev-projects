@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Doctrine\Inflector\Language;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Pluralizer;
 use Illuminate\Support\ServiceProvider;
 

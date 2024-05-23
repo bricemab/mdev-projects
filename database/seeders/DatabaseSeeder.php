@@ -36,11 +36,19 @@
             ]);
             $company->file_id = $file->id;
             $company->save();
-            $file = File::factory()->create([
+            File::factory()->create([
                 "name" => "Fichier de test",
                 "unique_name" => Str::random(12),
                 'path' => "files/projects/",
                 'extension' => "pdf",
+                'size' => 132,
+            ]);
+            $file = File::factory()->create([
+                "name" => "Offre MDev",
+                "unique_name" => "AAs5e9itLL",
+                'path' => "files/projects/",
+                'extension' => "pdf",
+                'company_id' => $company->id,
                 'size' => 132,
             ]);
             $project = Project::factory()->create([
@@ -83,12 +91,18 @@
                 $task->progress_hours = $value;
                 $task->save();
             }
+            $company = Company::factory()->create([
+                "name" => "Campo SA",
+            ]);
             File::factory()->create([
                 "name" => "Logo Campo SA",
                 "unique_name" => "45Gz80F3wm",
                 'path' => "files/companies/",
                 'extension' => "jpeg",
+                'company_id' => $company->id,
                 'size' => 132,
             ]);
+            $company->file_id = $file->id;
+            $company->save();
         }
     }

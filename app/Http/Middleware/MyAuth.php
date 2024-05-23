@@ -25,6 +25,7 @@ class MyAuth
             "projects.index",
             "projects.detail",
             "files.show",
+            "files.download",
             "auth.logout",
         ]
     ];

@@ -112,7 +112,7 @@
 @yield("content")
 </div>
 <script>
-    if (localStorage.getItem("dark-theme") === "true") {
+    if (localStorage.getItem("dark-theme") === "true" || !localStorage.getItem("dark-theme")) {
         document.querySelector("html").classList.add("dark");
     } else {
         document.querySelector("html").classList.remove("dark");

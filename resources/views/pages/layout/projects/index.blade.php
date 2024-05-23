@@ -18,6 +18,7 @@
                 <th scope="col" class="px-6 py-3 text-center">{{__("projects.headers.hours")}}</th>
                 <th scope="col" class="px-6 py-3 text-center">{{__("projects.headers.rate")}}</th>
                 <th scope="col" class="px-6 py-3 text-center">{{__("projects.headers.price")}}</th>
+                <th scope="col" class="px-6 py-3 text-center">{{__("projects.headers.state")}}</th>
                 <th scope="col" class="px-6 py-3 text-center">{{__("projects.headers.links")}}</th>
                 <th scope="col" class="px-6 py-3 text-center">{{__("projects.headers.dates")}}</th>
                 <th scope="col" class="px-6 py-3 text-center">{{__("projects.headers.cdc")}}</th>
@@ -39,6 +40,9 @@
                     </td>
                     <td class="px-6 py-4 text-center">
                         {{$project->price}}.-
+                    </td>
+                    <td class="px-6 py-4 text-center">
+                        {{\App\ProjectStateEnum::getLabel($project->state)}}
                     </td>
                     <td class="px-6 py-4">
                         @if($project->url_prod)

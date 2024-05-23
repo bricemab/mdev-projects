@@ -7,8 +7,16 @@ return [
         "rate" => "Tarif",
         "hours" => "Heures",
         "dates" => "Dates début/fin",
+        "state" => "Statut",
         "cdc" => "Cahier des charges"
     ],
+	"state" => "Statut",
+	"enum-states" => [
+		"pending" => "En cours",
+		"not-validated" => "Pas validé",
+		"validated" => "Validé",
+		"finished" => "Terminé",
+	],
     "detail" => [
         "view-pool-hours" => "Aperçu pool d'heures",
         "information" => "Informations",

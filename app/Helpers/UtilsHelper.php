@@ -37,6 +37,15 @@ class UtilsHelper {
         return $decimalHours;
     }
 
+	public static function getCasesFromEnum(array $enum)
+	{
+		$array = [];
+		foreach ($enum as $e) {
+			$array[] = $e->value;
+		}
+		return $array;
+	}
+
     public static $darkThemeColors = [
         '#1F1F1F',
         '#2C2C2C',

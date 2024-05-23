@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use \App\ProjectStateEnum;
 
 return new class extends Migration
 {
@@ -12,6 +13,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('projects', function (Blueprint $table) {
+			$enumValues = UtilsHelper::getCasesFromEnum(ProjectStateEnum::cases());
             $table->id();
             $table->string('name');
             $table->string('url_prod')->nullable();
@@ -19,6 +21,7 @@ return new class extends Migration
             $table->decimal('price', 10, 2);
             $table->decimal('hours', 10);
             $table->decimal('rate', 10, 2);
+            $table->enum('state', $enumValues)->default(\App\ProjectStateEnum::NOT_VALIDATED->value);
             $table->unsignedBigInteger('file_id')->nullable();
             $table->foreign('file_id')->references('id')->on('files');
             $table->unsignedBigInteger('company_id');

@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use App\Models\Company;
 use App\Models\File;
+use App\ProjectStateEnum;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -27,6 +28,7 @@ class ProjectFactory extends Factory
             "price" => $rate * $hours,
             "hours" => $hours,
             "rate" => $rate,
+            "state" => ProjectStateEnum::PENDING->value,
             "file_id" => 1,
             "start_date" => fake()->date("Y-m-d", ),
             "end_date" => fake()->date("Y-m-d", "2025-01-01"),

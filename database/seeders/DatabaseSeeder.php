@@ -10,7 +10,8 @@
     use App\Models\User;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
-    use App\RoleEnum;
+	use App\ProjectStateEnum;
+	use App\RoleEnum;
     use Database\Factories\TaskFactory;
     use Illuminate\Database\Seeder;
     use Illuminate\Support\Facades\Hash;
@@ -58,6 +59,7 @@
                 "price" => 500*65,
                 "hours" => 500,
                 "rate" => 65,
+                "state" => ProjectStateEnum::PENDING->value,
                 "file_id" => $file->id,
                 "start_date" => "2024-03-01",
                 "end_date" => "2024-12-31",

@@ -43,38 +43,38 @@
                 </li>
             </ul>
         </div>
-    </div>
-    <div class="grid grid-cols-1 my-5 h-1">
-    <div class="text-xl font-bold my-1">{{__("projects.detail.reports-project")}}</div>
-    <table class="table-auto w-full text-sm text-left rtl:text-right text-neutral-500 dark:text-neutral-400">
-        <thead class="text-xs text-neutral-700 uppercase bg-neutral-50 dark:bg-neutral-700 dark:text-neutral-400">
-        <tr>
-            <th scope="col" class="px-6 py-3 max-w-xl">{{__("projects.detail.reports-table.task")}}</th>
-            <th scope="col" class="px-6 py-3 max-w-xl">{{__("projects.detail.reports-table.report-description")}}</th>
-            <th scope="col" class="px-6 py-3 text-center">{{__("projects.detail.reports-table.date")}}</th>
-            <th scope="col" class="px-6 py-3 text-center">{{__("projects.detail.reports-table.time")}}</th>
-        </tr>
-        </thead>
-        <tbody>
-        @foreach($project->reports as $report)
-            <tr class="bg-white border-b dark:bg-neutral-800 dark:border-neutral-700">
-                <th scope="row" class="max-w-64 text-ellipsis overflow-hidden ... px-6 py-4 font-medium text-neutral-900 whitespace-nowrap dark:text-white">
-                    {{$report->task->name}}
-                </th>
-                <td class="min-w-52 max-w-52 text-ellipsis overflow-hidden ... px-6 py-4 text-justify">
-                    {{$report->description}}
-                </td>
-                <td class="px-6 py-4 text-center">
-                    {{date("d.m.Y", strtotime($report->date))}}
-                </td>
-                <td class="px-6 py-4 text-center">
-                    {{$report->time}}
-                </td>
-                @endforeach
-            </tr>
-        </tbody>
-    </table>
+        <div class="col-span-3">
+            <div class="text-xl font-bold my-1">{{__("projects.detail.reports-project")}}</div>
+            <table class="table-auto w-full text-sm text-left rtl:text-right text-neutral-500 dark:text-neutral-400">
+                <thead class="text-xs text-neutral-700 uppercase bg-neutral-50 dark:bg-neutral-700 dark:text-neutral-400">
+                <tr>
+                    <th scope="col" class="px-6 py-3 max-w-xl">{{__("projects.detail.reports-table.task")}}</th>
+                    <th scope="col" class="px-6 py-3 max-w-xl">{{__("projects.detail.reports-table.report-description")}}</th>
+                    <th scope="col" class="px-6 py-3 text-center">{{__("projects.detail.reports-table.date")}}</th>
+                    <th scope="col" class="px-6 py-3 text-center">{{__("projects.detail.reports-table.time")}}</th>
+                </tr>
+                </thead>
+                <tbody>
+                @foreach($project->reports as $report)
+                    <tr class="bg-white border-b dark:bg-neutral-800 dark:border-neutral-700">
+                        <th scope="row" class="max-w-64 text-ellipsis overflow-hidden ... px-6 py-4 font-medium text-neutral-900 whitespace-nowrap dark:text-white">
+                            {{$report->task->name}}
+                        </th>
+                        <td class="min-w-52 max-w-52 text-ellipsis overflow-hidden ... px-6 py-4 text-justify">
+                            {{$report->description}}
+                        </td>
+                        <td class="px-6 py-4 text-center">
+                            {{date("d.m.Y", strtotime($report->date))}}
+                        </td>
+                        <td class="px-6 py-4 text-center">
+                            {{$report->time}}
+                        </td>
+                        @endforeach
+                    </tr>
+                </tbody>
+            </table>
         </div>
+    </div>
     @include("pages.layout.projects.modal-times-spend")
     <script>
         const project = @json($project);

@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->text("description");
             $table->text("time");
+            $table->dateTime("date")->default(date("Y-m-d H:i:s"));
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
             $table->unsignedBigInteger('task_id');

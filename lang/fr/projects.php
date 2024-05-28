@@ -30,7 +30,14 @@ return [
         "Hours" => "Heures",
         "hours" => "heures",
         "tasks" => "Tâches",
-        "task-details" => "Afficher le détail des tâches"
+        "task-details" => "Afficher le détail des tâches",
+        "reports-project" => "Rapports du projet",
+        "reports-table" => [
+            "task" => "Tâche",
+            "report-description" => "Rapport développeur",
+            "date" => "Date",
+            "time" => "Durée",
+        ]
     ],
     "add-modal" => [
         "name" => "Nom",

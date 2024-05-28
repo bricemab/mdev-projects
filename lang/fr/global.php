@@ -5,5 +5,6 @@ return [
         "projects" => "Projets",
         "billings" => "Factures",
     ],
-    "back" => "Retour"
+    "back" => "Retour",
+    "translate-not-found" => "no translate zebi"
 ];

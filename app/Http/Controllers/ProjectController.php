@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 
 class ProjectController extends Controller
 {
@@ -25,6 +26,28 @@ class ProjectController extends Controller
         $data = [];
 
         return view("pages.layout.projects.detail", ["project" => $project, "data" => ($data)]);
+    }
+    public function addAction(Request $request) {
+        $rules = [
+            'name' => 'required|string|max:255',
+            'url_prod' => 'url',
+            'url_preprod' => 'url',
+            'github' => 'url',
+            'rate' => 'required|numeric',
+            'cdc_file' => 'nullable|file|mimes:pdf|max:2048',
+            'tasks' => 'array',
+            'tasks.*.name' => 'string|max:255',
+            'tasks.*.description' => 'string',
+            'tasks.*.hours' => 'string|min:1',
+        ];
+        $validator = Validator::make($request->all(), $rules);
+        if ($validator->fails()) {
+            return response()->json([
+                'success' => false,
+                'errors' => $validator->errors()
+            ], 422);
+        }
+
     }
 //    public function detail(Project $project) {
 //        $data = [

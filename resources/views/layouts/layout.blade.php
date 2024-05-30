@@ -6,6 +6,7 @@
     <title>Projets - MDevelopment</title>
     <meta name="viewport" content="width&#x3D;device-width,&#x20;initial-scale&#x3D;1.0">
     <meta http-equiv="X-UA-Compatible" content="IE&#x3D;edge">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="apple-touch-icon" sizes="180x180" href="{{asset("mdev/img/apple-touch-icon.png")}}">
     <link rel="icon" type="image/png" sizes="32x32" href="{{asset("mdev/img/favicon-32x32.png")}}">
     <link rel="icon" type="image/png" sizes="16x16" href="{{asset("mdev/img/favicon-16x16.png")}}">
@@ -17,7 +18,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="{{asset("assets/js/utils.js")}}"></script>
+    <script src="{{asset("assets/js/MdevUtils.js")}}"></script>
     @vite('resources/css/app.css')
     @vite(['resources/css/app.css','resources/js/app.js'])
 </head>

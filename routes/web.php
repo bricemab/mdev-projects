@@ -28,6 +28,7 @@
     Route::prefix("/projects")->name("projects.")->controller(ProjectController::class)->group(function () {
         Route::get("/", "index")->name("index");
         Route::get("/add", "add")->name("add");
+        Route::post("/add", "addAction")->name("add-action");
         Route::get("/detail/{project}", "detail")->name("detail");
     });
 

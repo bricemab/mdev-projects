@@ -56,6 +56,7 @@
                 'name' => "Développement du système de gestion de projets",
                 "url_prod" => "https://mdevelopment.ch/",
                 "url_preprod" => "https://preprod.mdevelopment.ch/",
+                "github" => "https://github.com/bricemab/mdev-projects.git",
                 "price" => 500*65,
                 "hours" => 500,
                 "rate" => 65,

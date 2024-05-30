@@ -25,6 +25,7 @@ class ProjectFactory extends Factory
             'name' => fake()->name(),
             "url_prod" => fake()->url(),
             "url_preprod" => fake()->url(),
+            "github" => fake()->url(),
             "price" => $rate * $hours,
             "hours" => $hours,
             "rate" => $rate,

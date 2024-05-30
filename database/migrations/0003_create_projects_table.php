@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('url_prod')->nullable();
             $table->string('url_preprod')->nullable();
+            $table->string('github')->nullable();
             $table->decimal('price', 10, 2);
             $table->decimal('hours', 10);
             $table->decimal('rate', 10, 2);

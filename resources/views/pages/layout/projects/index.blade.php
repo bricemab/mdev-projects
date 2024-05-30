@@ -21,6 +21,9 @@
                 <th scope="col" class="px-6 py-3 text-center">{{__("projects.headers.state")}}</th>
                 <th scope="col" class="px-6 py-3 text-center">{{__("projects.headers.links")}}</th>
                 <th scope="col" class="px-6 py-3 text-center">{{__("projects.headers.dates")}}</th>
+                @if(\App\Http\Middleware\MyAuth::hasPermission(\App\PermissionEnum::BILLINGS__ADD, auth()->user()->role))
+                    <th scope="col" class="px-6 py-3 text-center">{{__("projects.headers.github")}}</th>
+                @endif
                 <th scope="col" class="px-6 py-3 text-center">{{__("projects.headers.cdc")}}</th>
                 <th scope="col" class="px-6 py-3"></th>
             </tr>
@@ -46,20 +49,26 @@
                             {{\App\ProjectStateEnum::getLabel($project->state)}}
                         </span>
                     </td>
-                    <td class="px-6 py-4">
+                    <td class="py-4 text-center">
                         @if($project->url_prod)
-                            <a class="hover:text-sky-600" href="{{$project->url_prod}}"
-                               target="_blank">{{$project->url_prod}}</a>
+                            <a class="hover:text-sky-600" title="{{__("projects.add-modal.url-prod")}}" href="{{$project->url_prod}}"
+                               target="_blank"><i class='bx bx-globe cursor-pointer text-xl'></i></a>
                         @endif
                         @if($project->url_preprod)
-                            <a class="hover:text-sky-600" href="{{$project->url_preprod}}"
-                               target="_blank">{{$project->url_preprod}}</a>
+                            <a class="hover:text-sky-600" title="{{__("projects.add-modal.url-preprod")}}" href="{{$project->url_preprod}}"
+                               target="_blank"><i class='bx bx-globe cursor-pointer text-xl'></i></a>
                         @endif
                     </td>
                     <td class="px-6 py-4 text-center">
                         {{date("d.m.Y", strtotime($project->start_date))}}
                         <br>{{date("d.m.Y", strtotime($project->end_date))}}
                     </td>
+                    @if(\App\Http\Middleware\MyAuth::hasPermission(\App\PermissionEnum::BILLINGS__ADD, auth()->user()->role))
+                        <td class="px-6 py-4 text-center">
+                            <input type="hidden" value="{{$project->github}}" id="github-{{$project->id}}">
+                            <i class='bx bxl-github cursor-pointer text-xl' onclick="copyToClipboard('github-{{$project->id}}')"></i>
+                        </td>
+                    @endif
                     <td class="px-6 py-4 text-center">
                         <a href="{{route("files.download", $project->file->unique_name)}}">
                             <i class='bx bxs-file-pdf cursor-pointer text-xl'></i>
@@ -93,4 +102,16 @@
             </tbody>
         </table>
     </div>
+    <script>
+        function copyToClipboard(id) {
+            const hiddenInput = document.getElementById(id);
+            const tempTextArea = document.createElement('textarea');
+            tempTextArea.value = hiddenInput.value;
+            document.body.appendChild(tempTextArea);
+            tempTextArea.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempTextArea);
+            MdevUtils.successAlert('{{__("global.success-messages.clipboard-copy")}}')
+        }
+    </script>
 @endsection

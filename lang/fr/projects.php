@@ -8,6 +8,7 @@ return [
         "hours" => "Heures",
         "dates" => "Dates début/fin",
         "state" => "Statut",
+        "github" => "Github",
         "cdc" => "Cahier des charges"
     ],
 	"state" => "Statut",

@@ -13,7 +13,8 @@ use function PHPUnit\Framework\isFalse;
 class MyAuth
 {
     public static array $routesAllowAll = [
-        "mdev"
+        "mdev",
+        "lang",
     ];
 
     public static array $routesAllowLoggedOff = [

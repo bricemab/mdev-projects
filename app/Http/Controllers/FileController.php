@@ -2,6 +2,7 @@
 
     namespace App\Http\Controllers;
 
+    use App\Models\Company;
     use App\Models\File;
     use App\RoleEnum;
     use Illuminate\Support\Facades\Storage;
@@ -27,7 +28,11 @@ class FileController extends Controller
 
     public function download(File $file)
     {
-        if (auth()->user()->company_id !== $file->company->id) {
+        $companies = [];
+        foreach (Company::orderBy("name")->get() as $company) {
+            $companies[] = $company->id;
+        }
+        if (!in_array($file->company->id, $companies)) {
             abort(401);
         }
         $filename = $file->path.$file->unique_name;

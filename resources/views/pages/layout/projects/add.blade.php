@@ -4,8 +4,8 @@
     <div id="add-task" class="mx-auto">
         @csrf
         <p class="block mb-2 text-lg font-medium text-gray-900 dark:text-white">{{__("projects.add-modal.add-project")}}</p>
-        <div class="grid md:grid-cols-5 md:gap-6">
-            <div class="relative z-0 w-full mb-5 group col-span-2">
+        <div class="grid md:grid-cols-3 md:gap-6">
+            <div class="relative z-0 w-full mb-5 group">
                 <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{__("projects.add-modal.name")}}</label>
                 <input type="text" id="name" name="name" placeholder="{{__("projects.add-modal.name")}}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 dark:bg-neutral-50 dark:border-gray-600 dark:text-black" />
             </div>
@@ -16,6 +16,30 @@
             <div class="relative z-0 w-full mb-5 group">
                 <label for="url-preprod" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{__("projects.add-modal.url-preprod")}}</label>
                 <input type="text" id="url-preprod" name="url-preprod" placeholder="https://mdevelopment.ch/" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 dark:bg-neutral-50 dark:border-gray-600 dark:text-black"/>
+            </div>
+        </div>
+        <div class="grid md:grid-cols-2 md:gap-6">
+            <div class="relative z-0 w-full mb-5 group">
+                <label for="url-prod" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{__("projects.headers.dates")}}</label>
+                <div date-rangepicker datepicker-format="dd.mm.yyyy" class="flex items-center">
+                    <div class="relative w-1/2">
+                        <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                            <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z"/>
+                            </svg>
+                        </div>
+                        <input id="start-date" name="start-date" autocomplete="off" type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-neutral-50 dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="{{__('projects.add-modal.start-date')}}">
+                    </div>
+                    <span class="mx-4 text-gray-500">{{__("global.from-to")}}</span>
+                    <div class="relative w-1/2">
+                        <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                            <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z"/>
+                            </svg>
+                        </div>
+                        <input name="end-date" id="end-date" autocomplete="off" type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-neutral-50 dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="{{__('projects.add-modal.end-date')}}">
+                    </div>
+                </div>
             </div>
             <div class="relative z-0 w-full mb-5 group">
                 <label for="github" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{__("projects.headers.github")}}</label>
@@ -57,7 +81,7 @@
                 <div class="relative z-0 w-full group col-span-3">
                     <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{__("projects.add-modal.name")}}</label>
                 </div>
-                <div class="relative w-full group col-span-6">
+                <div class="relative w-full group col-span-5">
                     <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{__("projects.add-modal.description")}}</label>
                 </div>
                 <div class="relative w-full group col-span-2">
@@ -90,6 +114,7 @@
                 document.getElementById("price").value = value;
             })
         });
+
         function newTaskElement(id) {
             document.querySelectorAll("#add-tasks-container .bx-plus").forEach(el => {
                 el.classList.add("hidden")
@@ -117,7 +142,7 @@
             taskNameContainer.appendChild(taskNameInput);
 
             const taskDescContainer = document.createElement('div');
-            taskDescContainer.className = 'relative w-full group col-span-6';
+            taskDescContainer.className = 'relative w-full group col-span-5';
             const taskDescInput = document.createElement('input');
             taskDescInput.type = 'text';
             taskDescInput.id = 'task-description-'+id;
@@ -127,12 +152,27 @@
 
             const taskHoursContainer = document.createElement('div');
             taskHoursContainer.className = 'relative w-full group col-span-2';
-            const taskHoursInput = document.createElement('input');
-            taskHoursInput.type = 'text';
-            taskHoursInput.id = 'task-hours-'+id;
-            taskHoursInput.placeholder = '{{__("projects.add-modal.hours")}}';
-            taskHoursInput.className = 'task-description bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 dark:bg-neutral-50 dark:border-gray-600 dark:text-black';
-            taskHoursContainer.appendChild(taskHoursInput);
+            const innerDiv = document.createElement('div');
+            innerDiv.className = 'absolute inset-y-0 end-0 top-0 flex items-center pe-3.5 pointer-events-none';
+            const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+            svg.setAttribute('class', 'w-4 h-4 text-gray-500');
+            svg.setAttribute('aria-hidden', 'true');
+            svg.setAttribute('fill', 'currentColor');
+            svg.setAttribute('viewBox', '0 0 24 24');
+            const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+            path.setAttribute('fill-rule', 'evenodd');
+            path.setAttribute('d', 'M2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10S2 17.523 2 12Zm11-4a1 1 0 1 0-2 0v4a1 1 0 0 0 .293.707l3 3a1 1 0 0 0 1.414-1.414L13 11.586V8Z');
+            path.setAttribute('clip-rule', 'evenodd');
+            svg.appendChild(path);
+            innerDiv.appendChild(svg);
+            const input = document.createElement('input');
+            input.type = 'time';
+            input.className = 'bg-gray-50 border leading-none border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-neutral-50 dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500';
+            input.value = '00:00';
+            input.id = 'task-hours-'+id;
+
+            taskHoursContainer.appendChild(innerDiv);
+            taskHoursContainer.appendChild(input);
 
             const trashIconContainer = document.createElement('div');
             trashIconContainer.className = 'min-w-full col-span-1 flex justify-start items-center';
@@ -152,7 +192,7 @@
             taskContainer.appendChild(plusIconContainer);
             taskContainer.appendChild(taskNameContainer);
             taskContainer.appendChild(taskDescContainer);
-            taskContainer.appendChild(taskHoursInput);
+            taskContainer.appendChild(taskHoursContainer);
             taskContainer.appendChild(trashIconContainer);
 
             document.getElementById('add-tasks-container').appendChild(taskContainer);
@@ -163,16 +203,21 @@
             const urlPreprod = document.getElementById("url-preprod").value;
             const github = document.getElementById("github").value;
             const rate = document.getElementById("rate").value;
+            const startDateValue = document.getElementById("start-date").value;
+            const startDate = dayjs(startDateValue, "DD.MM.YYYY");
+            const endDateValue = document.getElementById("end-date").value;
+            const endDate = dayjs(endDateValue, "DD.MM.YYYY");
             const fileCdc = document.getElementById("cdc-file");
             const file = fileCdc.files[0];
 
-            // Create a FormData object
             const formData = new FormData();
             formData.append('name', name);
             formData.append('url_prod', urlProd);
             formData.append('url_preprod', urlPreprod);
             formData.append('github', github);
             formData.append('rate', rate);
+            formData.append('start_date', startDate.format("YYYY-MM-DD"));
+            formData.append('end_date', endDate.format("YYYY-MM-DD"));
             if (file) {
                 formData.append('cdc_file', file);
             }
@@ -192,7 +237,10 @@
                     'Content-Type': 'multipart/form-data'
                 }
             }).then(response => {
-
+                console.log(response)
+                if (response.success) {
+                    window.location.href = "{{route("projects.index")}}"
+                }
             }).catch(error => {
                 console.log(error)
                 for (const [key, err] of Object.entries(error.errors)) {

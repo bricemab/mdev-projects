@@ -9,5 +9,6 @@ return [
         "clipboard-copy" => "Copié dans presse-papier"
     ],
     "back" => "Retour",
+    "from-to" => "à",
     "translate-not-found" => "no translate zebi"
 ];

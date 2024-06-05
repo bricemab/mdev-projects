@@ -12,7 +12,8 @@ return Application::configure(basePath: dirname(__DIR__))
     )
     ->withMiddleware(function (Middleware $middleware) {
         $middleware->web(append: [
-            \App\Http\Middleware\MyAuth::class
+            \App\Http\Middleware\MyAuth::class,
+            \App\Http\Middleware\LocaleMiddleware::class
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {

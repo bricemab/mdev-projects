@@ -41,4 +41,4 @@
             abort(400);
         }
         App::setLocale($locale);
-    });
+    })->name("lang");

@@ -18,9 +18,15 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/datepicker.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1.11.11/dayjs.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.11.11/plugin/customParseFormat.min.js" integrity="sha512-FM59hRKwY7JfAluyciYEi3QahhG/wPBo6Yjv6SaPsh061nFDVSukJlpN+4Ow5zgNyuDKkP3deru35PHOEncwsw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="{{asset("assets/js/MdevUtils.js")}}"></script>
     @vite('resources/css/app.css')
     @vite(['resources/css/app.css','resources/js/app.js'])
+    <script>
+        dayjs.extend(dayjs_plugin_customParseFormat);
+    </script>
 </head>
 
 <body class="bg-white dark:bg-neutral-900 text-black dark:text-white">

@@ -22,6 +22,7 @@ class Project extends Model
         'name',
         "url_prod",
         "url_preprod",
+        "github",
         "price",
         "rate",
         "file_id",

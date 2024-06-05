@@ -30,6 +30,12 @@ class UtilsHelper {
         $minutes = round($decimalPart * 60);
         return sprintf('%d:%02d', $hours, $minutes);
     }
+
+    public static function timeToDecimal($time) {
+        list($hours, $minutes) = explode(':', $time);
+        $decimalHours = $hours + $minutes / 60;
+        return round($decimalHours, 2);
+    }
     public static function convertHoursMinutesToDecimal($hoursMinutes) {
         list($hours, $minutes) = explode(':', $hoursMinutes);
         $decimalMinutes = $minutes / 60;
